@@ -1,0 +1,39 @@
+modLoader="javafml" #mandatory
+loaderVersion="[43,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+[[mods]] #mandatory
+modId="muddyroutes" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Muddy Routes" #mandatory
+logoFile="muddyroutes.png" #optional
+credits="Heltrato (Co-Developer)" #optional
+authors="Crabbarition" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Muddy Routes is a 1.19.2 Forge mod that would add more content
+to the Mangrove Swamp biome. It would introduce 2 new mobs,
+new blocks and items, and a new structure to find.
+The goal of Muddy Routes is to make Mangrove Swamps
+be more exciting to find for players.
+
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.muddyroutes]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[43,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.muddyroutes]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.19.2,1.20)"
+    ordering="NONE"
+    side="BOTH"
