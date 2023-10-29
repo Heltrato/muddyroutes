@@ -1,8 +1,10 @@
 package com.crabbarition.muddyroutes;
 
+import com.crabbarition.muddyroutes.datagen.*;
 import com.crabbarition.muddyroutes.registry.ModBlocks;
 import com.crabbarition.muddyroutes.registry.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -10,6 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +36,7 @@ public class MuddyRoutes {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::modDataGen);
 
         ModBlocks.MOD_BLOCKS.register(modEventBus);
         ModItems.MOD_ITEMS.register(modEventBus);
@@ -43,13 +47,25 @@ public class MuddyRoutes {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-
+        ModBlocks.addPlantsPots();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
+    }
+
+    public final void modDataGen(GatherDataEvent pEvent) {
+        DataGenerator generator = pEvent.getGenerator();
+
+        generator.addProvider(pEvent.includeClient(), new ModBlockStates(generator, pEvent.getExistingFileHelper()));
+        generator.addProvider(pEvent.includeClient(), new ModItemModels(generator, pEvent.getExistingFileHelper()));
+        generator.addProvider(pEvent.includeClient(), new ModLanguages(generator));
+        generator.addProvider(pEvent.includeServer(), new ModLootTables(generator));
+        generator.addProvider(pEvent.includeServer(), new ModRecipes(generator));
+
+
     }
 
 }
