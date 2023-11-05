@@ -1,0 +1,10 @@
+{
+  "replace ": false,
+  "values": [
+    "muddyroutes:mossy_mud_bricks",
+    "muddyroutes:mossy_mud_stairs",
+    "muddyroutes:mossy_mud_slabs",
+    "muddyroutes:mossy_mud_walls",
+    "muddyroutes:mud_mosaic"
+  ]
+}

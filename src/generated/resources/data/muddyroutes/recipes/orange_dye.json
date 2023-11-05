@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "muddyroutes:air_plant"
+    }
+  ],
+  "result": {
+    "item": "minecraft:orange_dye"
+  }
+}

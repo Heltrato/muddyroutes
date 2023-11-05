@@ -8,19 +8,19 @@ import net.minecraft.world.level.material.MaterialColor;
 public class ModBlockProperties {
 
     public static BlockBehaviour.Properties brick_properties() {
-        return stone_properties(MaterialColor.COLOR_MAGENTA, 1.0F, 3.0F, true);
+        return mud_brick(MaterialColor.COLOR_MAGENTA, 1.0F, 3.0F, true);
     }
 
     public static BlockBehaviour.Properties stone_properties(MaterialColor color, float hardness, float resistance) {
-        return stone_properties(Material.STONE, color, hardness, resistance, false);
+        return mud_brick(Material.STONE, color, SoundType.STONE, hardness, resistance, false);
     }
 
-    public static BlockBehaviour.Properties stone_properties(MaterialColor color, float hardness, float resistance, boolean tool) {
-        return stone_properties(Material.STONE, color, hardness, resistance, tool);
+    public static BlockBehaviour.Properties mud_brick(MaterialColor color, float hardness, float resistance, boolean tool) {
+        return mud_brick(Material.STONE, color, SoundType.MUD_BRICKS, hardness, resistance, tool);
     }
 
-    public static BlockBehaviour.Properties stone_properties(Material material, MaterialColor color, float hardness, float resistance, boolean tool) {
-        BlockBehaviour.Properties props = basicProps(material, color, SoundType.STONE, hardness, resistance);
+    public static BlockBehaviour.Properties mud_brick(Material material, MaterialColor color, SoundType sound, float hardness, float resistance, boolean tool) {
+        BlockBehaviour.Properties props = basicProps(material, color, sound, hardness, resistance);
         if (tool)
             props.requiresCorrectToolForDrops();
         return props;

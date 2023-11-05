@@ -1,0 +1,9 @@
+// 1.19.2	2023-11-05T19:21:39.9465527	Muddy Routes Loot Tables
+89da5174f1340a9e031b4a1f120adea7d99685f3 data/muddyroutes/loot_tables/blocks/air_plant.json
+9007e450f86ed6b6e6d4d24ee7113d578414dd9c data/muddyroutes/loot_tables/blocks/mossy_mud_bricks.json
+825c19f2e6e689993995cc21581d5a2e5fbcf808 data/muddyroutes/loot_tables/blocks/mossy_mud_slabs.json
+a52ddc76814324acba03cfd1bcf939bc4dadf71c data/muddyroutes/loot_tables/blocks/mossy_mud_stairs.json
+cd4f6c0a1b89fa258363d864a9af216d662bd998 data/muddyroutes/loot_tables/blocks/mossy_mud_walls.json
+9c0802b9496aa6cefa6599659a617bb5de34a421 data/muddyroutes/loot_tables/blocks/mud_mosaic.json
+2e77472c1c31bc7fda1edf97f36f9f0af4d3c75d data/muddyroutes/loot_tables/blocks/potted_air_plant.json
+08fb9d43014f196d2546a7d30f21e12c7d6bd867 data/muddyroutes/loot_tables/entities/shrimp.json

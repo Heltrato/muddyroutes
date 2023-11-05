@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "muddyroutes:mossy_mud_slabs"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "muddyroutes:mud_mosaic"
+  }
+}

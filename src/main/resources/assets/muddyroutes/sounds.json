@@ -1,0 +1,13 @@
+{
+  "shrimp.hurt": {
+    "sounds": [
+      "muddyroutes:shrimp_hurt1",
+      "muddyroutes:shrimp_hurt2"
+    ]
+  },
+  "shrimp.kill": {
+    "sounds": [
+      "muddyroutes:shrimp_kill"
+    ]
+  }
+}

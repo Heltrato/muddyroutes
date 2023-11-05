@@ -2,9 +2,12 @@ package com.crabbarition.muddyroutes.datagen;
 
 import com.crabbarition.muddyroutes.MuddyRoutes;
 import com.crabbarition.muddyroutes.registry.ModBlocks;
+import com.crabbarition.muddyroutes.registry.ModEntities;
 import com.crabbarition.muddyroutes.registry.ModItems;
 import com.crabbarition.muddyroutes.registry.ModTabs;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -25,12 +28,16 @@ public class ModLanguages extends LanguageProvider {
         ModBlocks.addLanguage(this);
         ModItems.createItemLanguage(this);
         ModTabs.itemGroupLanguage(this);
+        ModEntities.addName(this);
     }
 
     public void addLang(Supplier<? extends Block> pBlock, String pName) {
         this.add(pBlock.get(), pName);
     }
 
+    public void addEntity(Supplier<? extends EntityType<?>> pBlock, String pName) {
+        this.add(pBlock.get(), pName);
+    }
 
 
 }

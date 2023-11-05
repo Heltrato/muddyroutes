@@ -1,0 +1,12 @@
+{
+  "block.muddyroutes.air_plant": "Air Plant",
+  "block.muddyroutes.mossy_mud_bricks": "Mossy Mud Bricks",
+  "block.muddyroutes.mossy_mud_slabs": "Mossy Mud Slabs",
+  "block.muddyroutes.mossy_mud_stairs": "Mossy Mud Stairs",
+  "block.muddyroutes.mossy_mud_walls": "Mossy Mud Walls",
+  "block.muddyroutes.mud_mosaic": "Mud Mosaic",
+  "block.muddyroutes.potted_air_plant": "Potted Air Plant",
+  "entity.muddyroutes.shrimp": "Shrimp",
+  "item.muddyroutes.shrimp_spawn_egg_spawn_egg": "Shrimp Spawn Egg",
+  "itemGroup.muddy_routes_tabs": "Muddy Routes Tabs"
+}

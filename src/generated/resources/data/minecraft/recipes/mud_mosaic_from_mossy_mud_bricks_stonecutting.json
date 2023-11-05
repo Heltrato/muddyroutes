@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "muddyroutes:mossy_mud_bricks"
+  },
+  "result": "muddyroutes:mud_mosaic"
+}

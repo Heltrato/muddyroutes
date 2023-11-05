@@ -18,12 +18,16 @@ import java.util.function.Supplier;
 public class ModItems {
     public static final DeferredRegister<Item> MOD_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MuddyRoutes.MODID);
 
+    public static final RegistryObject<Item> SHRIMP_SPAWN_EGG = registerEgg("shrimp_spawn_egg", ModEntities.SHRIMP, 0x6A2514, 0xFF10FF);
+
 
     public static void createItemModels(ModItemModels pItemModels) {
+        pItemModels.eggItem(SHRIMP_SPAWN_EGG);
 
     }
 
-    public static void createItemLanguage(ModLanguages pLang){
+    public static void createItemLanguage(ModLanguages pLang) {
+        pLang.add(SHRIMP_SPAWN_EGG.get(), "Shrimp Spawn Egg");
 
     }
 
@@ -32,7 +36,7 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerItem(String name) {
-        return registerItem(name, () -> new Item(ModItemProperties.item_properties()));
+        return registerItem(name, () -> new Item(ModItemProperties.item_properties().tab(ModTabs.muddy_routes_tabs)));
     }
 
     private static RegistryObject<Item> registerItem(String name, FoodProperties props) {
@@ -40,7 +44,7 @@ public class ModItems {
     }
 
     public static RegistryObject<Item> registerEgg(String name, Supplier<? extends EntityType<? extends Mob>> entity, int back, int front) {
-        return registerItem(name + "_spawn_egg", () -> new ForgeSpawnEggItem(entity, back, front, new Item.Properties()));
+        return registerItem(name + "_spawn_egg", () -> new ForgeSpawnEggItem(entity, back, front, new Item.Properties().tab(ModTabs.muddy_routes_tabs)));
     }
 
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "muddyroutes:block/mud_mosaic_end",
+    "side": "muddyroutes:block/mud_mosaic_side"
+  }
+}

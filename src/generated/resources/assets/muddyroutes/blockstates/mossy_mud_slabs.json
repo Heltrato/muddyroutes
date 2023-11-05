@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "muddyroutes:block/mossy_mud_slabs"
+    },
+    "type=double": {
+      "model": "muddyroutes:block/mossy_mud_bricks"
+    },
+    "type=top": {
+      "model": "muddyroutes:block/mossy_mud_slabs_top"
+    }
+  }
+}

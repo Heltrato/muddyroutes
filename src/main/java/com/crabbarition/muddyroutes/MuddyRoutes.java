@@ -2,9 +2,12 @@ package com.crabbarition.muddyroutes;
 
 import com.crabbarition.muddyroutes.datagen.*;
 import com.crabbarition.muddyroutes.registry.ModBlocks;
+import com.crabbarition.muddyroutes.registry.ModEntities;
 import com.crabbarition.muddyroutes.registry.ModItems;
+import com.crabbarition.muddyroutes.registry.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -19,6 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -37,9 +41,13 @@ public class MuddyRoutes {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::modDataGen);
+        modEventBus.addListener(ModEntities::mobAttribute);
+        modEventBus.addListener(ModEntities::render);
 
         ModBlocks.MOD_BLOCKS.register(modEventBus);
         ModItems.MOD_ITEMS.register(modEventBus);
+        ModEntities.MOD_ENTITIES.register(modEventBus);
+        ModSounds.MOD_SOUNDS.register(modEventBus);
         GeckoLib.initialize();
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -48,6 +56,7 @@ public class MuddyRoutes {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         ModBlocks.addPlantsPots();
+        ModEntities.addEntitySpawnPlacement();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -64,8 +73,25 @@ public class MuddyRoutes {
         generator.addProvider(pEvent.includeClient(), new ModLanguages(generator));
         generator.addProvider(pEvent.includeServer(), new ModLootTables(generator));
         generator.addProvider(pEvent.includeServer(), new ModRecipes(generator));
-
-
     }
+
+
+    public static ResourceLocation modResource(String source) {
+        var re = new ResourceLocation(MODID, source);
+        return re;
+    }
+
+    public static ResourceLocation geo(String filename) {
+        return modResource("geo/" + filename + ".geo.json");
+    }
+
+    public static ResourceLocation texEntity(String filename) {
+        return modResource("textures/entity/" + filename + ".png");
+    }
+
+    public static ResourceLocation animEntity(String filename) {
+        return modResource("animations/" + "animation." + filename + ".json");
+    }
+
 
 }

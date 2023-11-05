@@ -1,26 +1,24 @@
 package com.crabbarition.muddyroutes.registry;
 
 import com.crabbarition.muddyroutes.MuddyRoutes;
+import com.crabbarition.muddyroutes.block.AirPlantBlock;
 import com.crabbarition.muddyroutes.datagen.ModBlockStates;
 import com.crabbarition.muddyroutes.datagen.ModItemModels;
 import com.crabbarition.muddyroutes.datagen.ModLanguages;
 import com.crabbarition.muddyroutes.datagen.ModLootTables;
 import com.crabbarition.muddyroutes.registry.properties.ModBlockProperties;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import software.bernie.shadowed.fasterxml.jackson.databind.annotation.JsonAppend;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -31,13 +29,13 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> MOD_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MuddyRoutes.MODID);
 
-    public final static RegistryObject<Block> mossy_mud_bricks = register("mossy_mud_bricks", ModBlockProperties.stone_properties(MaterialColor.COLOR_MAGENTA, 1f, 1f));
+    public final static RegistryObject<Block> mossy_mud_bricks = register("mossy_mud_bricks", ModBlockProperties.mud_brick(MaterialColor.COLOR_MAGENTA, 1.5f, 3f, true));
     public final static RegistryObject<StairBlock> mossy_mud_stairs = register("mossy_mud_stairs", makeStairs(mossy_mud_bricks));
-    public final static RegistryObject<SlabBlock> mossy_mud_slabs = register("mossy_mud_slabs", makeSlab(ModBlockProperties.stone_properties(MaterialColor.COLOR_MAGENTA, 1f, 1f)));
+    public final static RegistryObject<SlabBlock> mossy_mud_slabs = register("mossy_mud_slabs", makeSlab(ModBlockProperties.mud_brick(MaterialColor.COLOR_MAGENTA, 1.5f, 3f, true)));
     public final static RegistryObject<WallBlock> mossy_mud_walls = register("mossy_mud_walls", makeWall(mossy_mud_bricks));
-    public final static RegistryObject<RotatedPillarBlock> mud_mosaic = register("mud_mosaic", () -> new RotatedPillarBlock(ModBlockProperties.stone_properties(MaterialColor.COLOR_CYAN, 1f, 1f)));
+    public final static RegistryObject<RotatedPillarBlock> mud_mosaic = register("mud_mosaic", () -> new RotatedPillarBlock(ModBlockProperties.mud_brick(MaterialColor.COLOR_CYAN, 1.5f, 3f, true)));
 
-    public final static RegistryObject<Block> air_plant = register("air_plant", () -> new BushBlock(ModBlockProperties.plantProps(MaterialColor.COLOR_GREEN, false)));
+    public final static RegistryObject<Block> air_plant = register("air_plant", () -> new AirPlantBlock());
 
     public final static RegistryObject<FlowerPotBlock> potted_air_plant = registerFlowerPot(air_plant);
 
