@@ -13,6 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -37,12 +38,12 @@ public class ModEntities {
         pEntity.addTable(SHRIMP, pEntity.singleDropTableWithSmeltFeature(() -> Items.SALMON, 0, 1));
     }
 
-    public static void addEntitySpawnPlacement() {
+    public static void addEntitySpawnPlacement(SpawnPlacementRegisterEvent placementRegisterEvent) {
         var ground = SpawnPlacements.Type.ON_GROUND;
         var water = SpawnPlacements.Type.IN_WATER;
         var lava = SpawnPlacements.Type.IN_LAVA;
-        placement(SHRIMP, water, Shrimp::checkShrimpSpawnRules);
 
+        placementRegisterEvent.register(SHRIMP.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Shrimp::checkShrimpSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
 
@@ -55,15 +56,6 @@ public class ModEntities {
     public static void render(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(SHRIMP.get(), ShrimpRenderer::new);
 
-    }
-
-
-    public static <E extends Mob, T extends EntityType<E>> void placement(Supplier<T> entity, SpawnPlacements.Type type, SpawnPlacements.SpawnPredicate<E> predicate) {
-        placement(entity, type, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, predicate);
-    }
-
-    public static <E extends Mob, T extends EntityType<E>> void placement(Supplier<T> entity, SpawnPlacements.Type type, Heightmap.Types heightmap, SpawnPlacements.SpawnPredicate<E> predicate) {
-        SpawnPlacements.register(entity.get(), type, heightmap, predicate);
     }
 
 

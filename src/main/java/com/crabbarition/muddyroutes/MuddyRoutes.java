@@ -43,6 +43,7 @@ public class MuddyRoutes {
         modEventBus.addListener(this::modDataGen);
         modEventBus.addListener(ModEntities::mobAttribute);
         modEventBus.addListener(ModEntities::render);
+        modEventBus.addListener(ModEntities::addEntitySpawnPlacement);
 
         ModBlocks.MOD_BLOCKS.register(modEventBus);
         ModItems.MOD_ITEMS.register(modEventBus);
@@ -56,7 +57,6 @@ public class MuddyRoutes {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         ModBlocks.addPlantsPots();
-        ModEntities.addEntitySpawnPlacement();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -74,24 +74,5 @@ public class MuddyRoutes {
         generator.addProvider(pEvent.includeServer(), new ModLootTables(generator));
         generator.addProvider(pEvent.includeServer(), new ModRecipes(generator));
     }
-
-
-    public static ResourceLocation modResource(String source) {
-        var re = new ResourceLocation(MODID, source);
-        return re;
-    }
-
-    public static ResourceLocation geo(String filename) {
-        return modResource("geo/" + filename + ".geo.json");
-    }
-
-    public static ResourceLocation texEntity(String filename) {
-        return modResource("textures/entity/" + filename + ".png");
-    }
-
-    public static ResourceLocation animEntity(String filename) {
-        return modResource("animations/" + "animation." + filename + ".json");
-    }
-
 
 }

@@ -1,7 +1,6 @@
 package com.crabbarition.muddyroutes.entity;
 
 import com.crabbarition.muddyroutes.registry.ModSounds;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -48,6 +47,8 @@ public class Shrimp extends AbstractFish implements IAnimatable {
     protected int age;
     protected int forcedAge;
     protected int forcedAgeTimer;
+
+    private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
 
     protected static final int PARENT_AGE_AFTER_BREEDING = 6000;
@@ -134,25 +135,31 @@ public class Shrimp extends AbstractFish implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<Shrimp>(this, "livingPredicate", 2, this::livingPredicate));
+        data.addAnimationController(new AnimationController<Shrimp>(this, "idlePredicate", 1F, this::idlePredicate));
+        data.addAnimationController(new AnimationController<Shrimp>(this, "swimPredicate", 0.5F, this::swimPredicate));
     }
 
-    protected <E extends IAnimatable> PlayState livingPredicate(AnimationEvent<E> event) {
-        if (Minecraft.getInstance().isPaused()) {
-            return PlayState.STOP;
+    protected <E extends IAnimatable> PlayState idlePredicate(AnimationEvent<E> event) {
+        if (!event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shrimp.idle", ILoopType.EDefaultLoopTypes.LOOP));
+            return PlayState.CONTINUE;
         }
-        if (event.isMoving()) {
+        return PlayState.STOP;
+    }
+
+    protected <E extends IAnimatable> PlayState swimPredicate(AnimationEvent<E> event) {
+        if (!event.isMoving()) {
+            return PlayState.STOP;
+        } else {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shrimp.swim", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
-        } else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shrimp.idle", ILoopType.EDefaultLoopTypes.LOOP));
         }
-        return PlayState.CONTINUE;
     }
+
 
     @Override
     public AnimationFactory getFactory() {
-        return GeckoLibUtil.createFactory(this);
+        return factory;
     }
 
     public static AttributeSupplier.Builder shrimp() {
