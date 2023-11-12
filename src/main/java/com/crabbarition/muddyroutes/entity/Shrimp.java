@@ -124,7 +124,7 @@ public class Shrimp extends AbstractFish implements IAnimatable {
 
     @Override
     public int getMaxSpawnClusterSize() {
-        return 5;
+        return 8;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class Shrimp extends AbstractFish implements IAnimatable {
     public static AttributeSupplier.Builder shrimp() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 10D)
-                .add(Attributes.MOVEMENT_SPEED, 0.15D)
+                .add(Attributes.MOVEMENT_SPEED, 0.1D)
                 .add(Attributes.FOLLOW_RANGE, 45.0D);
     }
 

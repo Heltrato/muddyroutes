@@ -6,7 +6,7 @@
   "spawners": {
     "type": "muddyroutes:shrimp",
     "weight": 80,
-    "minCount": 1,
-    "maxCount": 5
+    "minCount": 5,
+    "maxCount": 8
   }
 }
