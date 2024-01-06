@@ -7,6 +7,9 @@
   "block.muddyroutes.mud_mosaic": "Mud Mosaic",
   "block.muddyroutes.potted_air_plant": "Potted Air Plant",
   "entity.muddyroutes.shrimp": "Shrimp",
+  "item.muddyroutes.cooked_shrimp": "Cooked Shrimp",
+  "item.muddyroutes.raw_shrimp": "Raw Shrimp",
+  "item.muddyroutes.shrimp_bucket": "Bucket of Shrimp",
   "item.muddyroutes.shrimp_spawn_egg_spawn_egg": "Shrimp Spawn Egg",
   "itemGroup.muddy_routes_tabs": "Muddy Routes Tabs"
 }
